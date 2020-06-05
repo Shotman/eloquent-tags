@@ -4,7 +4,7 @@ namespace Shamil\Tags;
 
 use Illuminate\Support\Collection;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\{Arr,Str}
+use Illuminate\Support\{Arr,Str};
 
 use Shamil\Tags\Models\Tag;
 
