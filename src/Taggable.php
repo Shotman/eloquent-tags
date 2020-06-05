@@ -4,6 +4,7 @@ namespace Shamil\Tags;
 
 use Illuminate\Support\Collection;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\{Arr,Str}
 
 use Shamil\Tags\Models\Tag;
 
@@ -58,7 +59,7 @@ trait Taggable
     {
         $sync = $this->tags()->syncWithoutDetaching($tags->pluck('id')->toArray());
 
-        foreach(array_get($sync, 'attached') as $attachedId) {
+        foreach(Arr::get($sync, 'attached') as $attachedId) {
             $tags->where('id', $attachedId)->first()->increment('count');
         }
     }
@@ -90,7 +91,7 @@ trait Taggable
     private function normaliseTagNames(array $tags)
     {
         return array_map(function ($tag) {
-            return str_slug($tag);
+            return Str::slug($tag);
         }, $tags);
     }
 }
